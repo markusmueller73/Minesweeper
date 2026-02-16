@@ -1,0 +1,9 @@
+[package]
+name = "egor_minesweeper"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+egor = { version = "0.8.0", features = ["log"] }
+image = { version = "0.25.6", default-features = false, features = ["png"] }
+rand = "0.9"
