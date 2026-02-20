@@ -1,9 +1,9 @@
 [package]
 name = "egor_minesweeper"
-version = "0.1.0"
+version = "0.2.0"
 edition = "2024"
 
 [dependencies]
-egor = { version = "0.8.0", features = ["log"] }
-image = { version = "0.25.6", default-features = false, features = ["png"] }
+egor = { git = "https://github.com/wick3dr0se/egor.git", features = ["log"]}
 rand = "0.9"
+rust-i18n = "3.1.5"

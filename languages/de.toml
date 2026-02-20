@@ -1,0 +1,4 @@
+start_easy_game = "Starte ein leichtes Spiel"
+start_med_game = "Starte ein mittleres Spiel"
+start_hard_game = "Start ein schweres Spiel"
+quit_game = "Beende Minesweeper"
