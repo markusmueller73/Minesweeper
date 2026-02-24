@@ -1,8 +1,9 @@
-use crate::game::{constants::MENUBAR_HEIGHT, game_state::{GameMode, GameState}};
+use crate::{engine, game::{constants::MENUBAR_HEIGHT, game_state::{GameMode, GameState}}};
 use egor::{
     app::{WindowEvent, egui::{Context, MenuBar, TopBottomPanel}},
     input::{Input, KeyCode, MouseButton},
     math::Vec2,
+    render::Graphics,
 };
 
 #[derive(Debug, Default)]
@@ -14,7 +15,7 @@ pub struct MouseState {
     pub wheel: f32,
 }
 
-pub fn handle_events(events: &mut Vec<WindowEvent>, game_state: &mut GameState) {
+pub fn handle_events(events: &mut Vec<WindowEvent>, graphics: &mut Graphics, game_state: &mut GameState) {
 
     for event in events {
 
@@ -24,6 +25,8 @@ pub fn handle_events(events: &mut Vec<WindowEvent>, game_state: &mut GameState) 
             game_state.focused = true;
         }  else if event == &WindowEvent::Focused(false) {
             game_state.focused = false;
+        } else if event == &WindowEvent::RedrawRequested {
+            engine::rendering::render_scene(graphics, game_state);
         }
 
     }

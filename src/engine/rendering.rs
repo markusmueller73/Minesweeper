@@ -5,11 +5,13 @@ pub fn render_scene(graphics: &mut Graphics, game_state: &GameState) {
 
     let score = format!("{:03}", game_state.score);
     let timer = format!("{:03}", game_state.time_elapsed);
-    let sb_font = game_state.assets.get_font("digital");
     let sb_size = 48.0;
 
     // clear background
     graphics.clear(WINDOW_BG_COLOR);
+    graphics.text("")
+        .in_rect(Rect::new(vec2(0.0, 0.0), vec2(game_state.config.width as f32, game_state.config.height as f32)), Align::MiddleCenter)
+        .color(WINDOW_BG_COLOR);
 
     // draw backgrd for the scores
     graphics.rect()
@@ -22,11 +24,11 @@ pub fn render_scene(graphics: &mut Graphics, game_state: &GameState) {
         .color(SCORE_BG_COLOR_2);
     graphics.text(&score)
         .in_rect(Rect::new(vec2(10.0, 10.0 + MENUBAR_HEIGHT), vec2(140.0, SCOREBOARD_HEIGHT - 20.0)), Align::MiddleCenter)
-        .font(sb_font.clone())
+        .font(game_state.assets.get_font("digital"))
         .size(sb_size)
         .color(Color::new([0.8, 0.8, 0.0, 1.0]));
 
-    // draw backgrd for the timer
+    // // draw backgrd for the timer
     graphics.rect()
         .at(vec2(game_state.config.width as f32 - 150.0 - 5.0, 5.0 + MENUBAR_HEIGHT))
         .size(vec2(150.0, SCOREBOARD_HEIGHT - 10.0))
@@ -37,11 +39,11 @@ pub fn render_scene(graphics: &mut Graphics, game_state: &GameState) {
         .color(SCORE_BG_COLOR_2);
     graphics.text(&timer)
         .in_rect(Rect::new(vec2(game_state.config.width as f32 - 140.0 - 10.0, 10.0 + MENUBAR_HEIGHT), vec2(140.0, SCOREBOARD_HEIGHT - 20.0)), Align::MiddleCenter)
-        .font(sb_font)
+        .font(game_state.assets.get_font("digital"))
         .size(sb_size)
         .color(Color::new([0.8, 0.8, 0.0, 1.0]));
 
-    // draw the board backgrd
+    // // draw the board backgrd
     graphics.rect()
         .at(vec2(0.0, SCOREBOARD_HEIGHT + MENUBAR_HEIGHT))
         .size(vec2(game_state.config.width as f32, game_state.config.width as f32))
