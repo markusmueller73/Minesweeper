@@ -1,4 +1,13 @@
-start_easy_game = "Starte ein leichtes Spiel"
+select_game = "Wähle einen Spiel-Modus..."
+wait_for_player = "Klicke zum fortfahren..."
+game_lost = "Du hast verloren!"
+game_won = "Gratulation, gewonnen!"
+
+[menu]
+title_game = "Spiel"
+start_easy_game = "Starte ein einfaches Spiel"
 start_med_game = "Starte ein mittleres Spiel"
-start_hard_game = "Start ein schweres Spiel"
+start_hard_game = "Starte ein schweres Spiel"
 quit_game = "Beende Minesweeper"
+title_help = "Hilfe"
+about = "Über Minesweeper"
