@@ -29,7 +29,7 @@ pub fn run() -> i32 {
         }
 
         // Handle window events
-        event_manager::handle_events(events, &mut state);
+        event_manager::handle_events(events, gfx, &mut state);
 
         // Update user input
         event_manager::handle_input(input, &mut state);
@@ -50,6 +50,7 @@ pub fn run() -> i32 {
 
         if state.resized {
             app.set_size(state.config.width, state.config.height);
+            app.request_redraw();
             state.resized = false;
         }
 
