@@ -9,9 +9,6 @@ pub fn render_scene(graphics: &mut Graphics, game_state: &GameState) {
 
     // clear background
     graphics.clear(WINDOW_BG_COLOR);
-    graphics.text("")
-        .in_rect(Rect::new(vec2(0.0, 0.0), vec2(game_state.config.width as f32, game_state.config.height as f32)), Align::MiddleCenter)
-        .color(WINDOW_BG_COLOR);
 
     // draw backgrd for the scores
     graphics.rect()
@@ -46,7 +43,7 @@ pub fn render_scene(graphics: &mut Graphics, game_state: &GameState) {
     // // draw the board backgrd
     graphics.rect()
         .at(vec2(0.0, SCOREBOARD_HEIGHT + MENUBAR_HEIGHT))
-        .size(vec2(game_state.config.width as f32, game_state.config.width as f32))
+        .size(vec2(game_state.config.width as f32, game_state.config.height as f32 - SCOREBOARD_HEIGHT - MENUBAR_HEIGHT))
         .color(BOARD_BG_COLOR);
 
     match game_state.mode {
@@ -67,7 +64,7 @@ pub fn render_scene(graphics: &mut Graphics, game_state: &GameState) {
                     vec2(game_state.config.width as f32, game_state.config.height as f32 - MENUBAR_HEIGHT - SCOREBOARD_HEIGHT)
                 ), Align::MiddleCenter)
                 .font(game_state.assets.get_font("mines"))
-                .size(20.0)
+                .size(36.0)
                 .color(Color::RED);
         },
 
@@ -79,7 +76,7 @@ pub fn render_scene(graphics: &mut Graphics, game_state: &GameState) {
                     vec2(game_state.config.width as f32, game_state.config.height as f32 - MENUBAR_HEIGHT - SCOREBOARD_HEIGHT)
                 ), Align::MiddleCenter)
                 .font(game_state.assets.get_font("mines"))
-                .size(20.0)
+                .size(30.0)
                 .color(Color::GREEN);
         },
 
@@ -91,7 +88,7 @@ pub fn render_scene(graphics: &mut Graphics, game_state: &GameState) {
                     vec2(game_state.config.width as f32, game_state.config.height as f32 - MENUBAR_HEIGHT - SCOREBOARD_HEIGHT)
                 ), Align::MiddleCenter)
                 .font(game_state.assets.get_font("mines"))
-                .size(20.0)
+                .size(36.0)
                 .color(Color::BLUE);
         },
 
@@ -103,7 +100,7 @@ pub fn render_scene(graphics: &mut Graphics, game_state: &GameState) {
                     vec2(game_state.config.width as f32, game_state.config.height as f32 - MENUBAR_HEIGHT - SCOREBOARD_HEIGHT)
                 ), Align::MiddleCenter)
                 .font(game_state.assets.get_font("mines"))
-                .size(20.0)
+                .size(36.0)
                 .color(Color::GREEN);
         },
 
@@ -172,7 +169,7 @@ fn draw_board(graphics: &mut Graphics, game_state: &GameState) {
                 graphics.text(&number)
                     .in_rect(Rect::new(pos_vec2, size_vec2), Align::MiddleCenter)
                     .font(game_state.assets.get_font("mines"))
-                    .size(16.0)
+                    .size(cell_size + 10.0)
                     .color(Color::new(color));
             }
 

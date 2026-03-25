@@ -26,7 +26,7 @@ impl Assets {
 
     pub fn load_fonts(&mut self, graphics: &mut Graphics) {
         self.font.entry("mines".to_ascii_lowercase())
-            .insert_entry(graphics.load_font(include_bytes!("../../assets/mine-sweeper.otf")).unwrap());
+            .insert_entry(graphics.load_font(include_bytes!("../../assets/acknowledge.ttf")).unwrap());
         self.font.entry("digital".to_ascii_lowercase())
             .insert_entry(graphics.load_font(include_bytes!("../../assets/digital-dream.ttf")).unwrap());
     }

@@ -59,7 +59,7 @@ pub fn handle_input(input: &Input, game_state: &mut GameState) {
 
 }
 
-pub fn handle_ui(context: &mut &Context, game_state: &mut GameState) {
+pub fn handle_ui(context: &mut &Context, game_state: &mut GameState) -> bool {
 
     TopBottomPanel::top("menu_bar").exact_height(MENUBAR_HEIGHT).show(context, |ui| {
 
@@ -69,20 +69,28 @@ pub fn handle_ui(context: &mut &Context, game_state: &mut GameState) {
 
                 if ui.button(t!("menu.start_easy_game")).clicked() {
                     game_state.mode = GameMode::GameInit(crate::game::board::BoardSize::Small);
+                    return true;
                 }
                 if ui.button(t!("menu.start_med_game")).clicked() {
                     game_state.mode = GameMode::GameInit(crate::game::board::BoardSize::Medium);
+                    return true;
                 }
                 if ui.button(t!("menu.start_hard_game")).clicked() {
                     game_state.mode = GameMode::GameInit(crate::game::board::BoardSize::Large);
+                    return true;
                 }
                 ui.separator();
                 if ui.button(t!("menu.quit_game")).clicked() {
                     game_state.mode = GameMode::QuitGame;
+                    true
+                } else {
+                    false
                 }
 
             });
         });
     });
+
+    false
 
 }

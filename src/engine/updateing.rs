@@ -42,13 +42,13 @@ pub fn update(game_state: &mut GameState) {
                 BoardSize::Medium => {
                     game_state.board_size = BoardSize::Medium;
                     game_state.board_size_f = CELL_SIZE_BOARD_M * MAX_CELLS_BOARD_M;
-                    game_state.cell_size = CELL_SIZE_BOARD_S;
+                    game_state.cell_size = CELL_SIZE_BOARD_M;
                 },
 
                 BoardSize::Large => {
                     game_state.board_size = BoardSize::Large;
                     game_state.board_size_f = CELL_SIZE_BOARD_L * MAX_CELLS_BOARD_L;
-                    game_state.cell_size = CELL_SIZE_BOARD_S;
+                    game_state.cell_size = CELL_SIZE_BOARD_L;
                 },
             }
 

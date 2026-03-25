@@ -8,7 +8,7 @@ use crate::game::game_state::{GameMode, GameState};
 use crate::engine::{event_manager, rendering, updateing};
 use egor::app::{App, FrameContext};
 
-pub fn run() -> i32 {
+pub fn run() -> Result<(), i32> {
 
     let mut state = GameState::new();dbg!(state.paused);
     let mut game_timer = std::time::Instant::now();
@@ -31,11 +31,11 @@ pub fn run() -> i32 {
         // Handle window events
         event_manager::handle_events(events, gfx, &mut state);
 
-        // Update user input
-        event_manager::handle_input(input, &mut state);
-
         // Update and render the UI
-        event_manager::handle_ui(egui_ctx, &mut state);
+        if !event_manager::handle_ui(egui_ctx, &mut state) {
+            // Update user input
+            event_manager::handle_input(input, &mut state);
+        }
 
         // Render scene
         rendering::render_scene(gfx, &state);
@@ -61,6 +61,6 @@ pub fn run() -> i32 {
 
     });
 
-    0
+    Ok(())
 
 }
